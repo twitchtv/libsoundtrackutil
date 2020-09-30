@@ -1,0 +1,22 @@
+/external/
+
+# Deploy tools
+/build/
+/out/build/
+/install/
+/scripts/*.js*
+/node_modules/
+/yarn-error.log
+
+# Merge backup files (from git/kdiff3)
+*.orig
+
+# Visual Studio dir
+.vs/
+/.vscode
+
+# TeamCity/IntelliJ
+.DS_Store
+.idea
+*.iml
+.teamcity/target
