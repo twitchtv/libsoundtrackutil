@@ -1,4 +1,7 @@
 
+rem Copyright Twitch Interactive, Inc. or its affiliates. All Rights Reserved.
+rem SPDX-License-Identifier: MIT
+
 set SOUNDTRACKUTIL_CONAN_LIB_NAME=libsoundtrackutil
 set SOUNDTRACKUTIL_CONAN_LIB_VERSION=
 set TMP_VERSION=
