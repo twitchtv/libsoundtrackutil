@@ -34,4 +34,4 @@ install(DIRECTORY include
   DESTINATION ${CMAKE_INSTALL_PREFIX}
   )
 
-format_code(libsoundtrackutil)
+#format_code(libsoundtrackutil)
