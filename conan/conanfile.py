@@ -78,16 +78,3 @@ class LibSoundtrackUtilConan(ConanFile):
 
     def package_info(self):
         self.cpp_info.libs = tools.collect_libs(self)
-
-    @property
-    def importsDestFolder(self):
-        #imports is called during package creation, so default to build_folder when the env variable is not set
-        #env variable will be set, for the case where the user is pulling in dependencies to make a local build
-        dest = os.getenv("CONAN_CMAKE_BINARY_DIR_PATH", None if not hasattr(self, "build_folder") else self.build_folder)
-
-        if dest is None:
-            raise RuntimeError("CONAN_CMAKE_BINARY_DIR_PATH not set")
-        return dest
-
-    def imports(self):
-        dest = self.importsDestFolder

@@ -15,8 +15,7 @@ endfunction()
 # modified from:
 # https://www.linkedin.com/pulse/simple-elegant-wrong-how-integrate-clang-format-friends-brendan-drew/
 function(generate_format_target targetname property filelist)
-    #find clang_format
-    find_program(clangformatpath NAMES "clang-format" PATHS ${CMAKE_BINARY_DIR} NO_DEFAULT_PATH)
+    #get cached clang format path, cached in format_code function
     find_program(clangformatpath NAMES "clang-format")
     if(NOT clangformatpath)
         message(FATAL_ERROR "Could not find clang format")
@@ -96,6 +95,15 @@ function(format_code targetname)
     if(ENABLE_CODE_FORMATTING)
         set(multiValueArgs SOURCES)
         cmake_parse_arguments(FORMAT_OPTIONS "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN})
+        #find clang_format
+        find_program(clangformatpath NAMES "clang-format" PATHS ${CMAKE_BINARY_DIR} NO_DEFAULT_PATH)
+        find_program(clangformatpath NAMES "clang-format")
+        if(NOT clangformatpath)
+            message(WARNING "Could not find clang format, disabling formatting")
+            set(ENABLE_CODE_FORMATTING OFF CACHE BOOL "" FORCE)
+            return()
+        endif()
+
         generate_format_target(${targetname} ${CMAKE_PROJECT_NAME}_FORMAT_TARGETS
             "${FORMAT_OPTIONS_SOURCES}")
     endif()
