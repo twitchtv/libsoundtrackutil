@@ -22,14 +22,14 @@ public:
         size_t valueSize = sizeof(ValueType);
         ValueType value = static_cast<ValueType>(arg);
         _data.resize(startSize + valueSize);
-        memcpy(_data.data() + startSize, &value, valueSize);
+        memcpy_s(_data.data() + startSize, _data.size() - startSize, &value, valueSize);
     }
 
     void writeBytes(gsl::span<const uint8_t> bytes)
     {
         size_t startSize = _data.size();
         _data.resize(startSize + bytes.size());
-        memcpy(_data.data() + startSize, bytes.data(), bytes.size());
+        memcpy_s(_data.data() + startSize, _data.size() - startSize, bytes.data(), bytes.size());
     }
 
     std::vector<uint8_t> consume()
@@ -53,14 +53,14 @@ public:
     {
         ValueType value;
         size_t valueSize = sizeof(ValueType);
-        memcpy(&value, _data.data() + _currentPosition, valueSize);
+        memcpy_s(&value, sizeof(value), _data.data() + _currentPosition, valueSize);
         _currentPosition += valueSize;
         return value;
     }
 
     void readBytes(gsl::span<uint8_t> bytes)
     {
-        memcpy(bytes.data(), _data.data() + _currentPosition, bytes.size());
+        memcpy_s(bytes.data(), bytes.size(), _data.data() + _currentPosition, bytes.size());
         _currentPosition += bytes.size();
     }
 
