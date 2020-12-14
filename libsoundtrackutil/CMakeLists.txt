@@ -27,7 +27,7 @@ target_sources(libsoundtrackutil PRIVATE
 target_compile_features(libsoundtrackutil PRIVATE cxx_std_17)
 
 install(TARGETS libsoundtrackutil
-  LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}
 )
 
 install(DIRECTORY include
