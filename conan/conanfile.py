@@ -8,7 +8,7 @@ import os
 #TODO change name of function
 class LibSoundtrackUtilConan(ConanFile):
     name = "libsoundtrackutil"
-    version = "0.0.7"
+    version = "0.0.8"
     license = "None"
     url = "https://github.com/twitchtv/libsoundtrackutil"
     description = ""
