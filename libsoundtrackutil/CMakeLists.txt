@@ -37,7 +37,7 @@ install(DIRECTORY include
   )
 
 if(MSVC)
-  install(FILES ${CMAKE_BINAYR_DIR}/bin/libsoundtrackutil.pdb
+  install(FILES ${CMAKE_BINARY_DIR}/bin/libsoundtrackutil.pdb
     CONFIGURATIONS Debug RelWithDebInfo
     DESTINATION lib
     )
