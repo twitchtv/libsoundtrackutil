@@ -4,7 +4,7 @@
 
 #include <libsoundtrackutil/SoundtrackIPC.h>
 
-using namespace Twtch::Audio;
+using namespace Twitch::Audio;
 
 int main()
 {

@@ -5,7 +5,6 @@
 from conans import ConanFile, CMake, tools
 import os
 
-#TODO change name of function
 class LibSoundtrackUtilConan(ConanFile):
     name = "libsoundtrackutil"
     version = "0.0.8"
