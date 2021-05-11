@@ -26,6 +26,8 @@ target_sources(libsoundtrackutil PRIVATE
 
 target_compile_features(libsoundtrackutil PRIVATE cxx_std_17)
 
+set_target_properties(libsoundtrackutil PROPERTIES COMPILE_PDB_NAME libsoundtrackutil)
+
 install(TARGETS libsoundtrackutil
   ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}
 )
@@ -34,4 +36,12 @@ install(DIRECTORY include
   DESTINATION ${CMAKE_INSTALL_PREFIX}
   )
 
+if(MSVC)
+  install(FILES ${CMAKE_BINAYR_DIR}/bin/libsoundtrackutil.pdb
+    CONFIGURATIONS Debug RelWithDebInfo
+    DESTINATION lib
+    )
+endif()
+
 format_code(libsoundtrackutil)
+
